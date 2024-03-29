@@ -1,18 +1,25 @@
+import java.util.*;
 class Solution {
     public List<Integer> findLonely(int[] nums) {
+        ArrayList<Integer> ans = new ArrayList<>();
         Arrays.sort(nums);
-        int n = nums.length;
-
-        List<Integer> result = new ArrayList<>();
-        for(int i = 0 ; i< n; i++){
-            if(i!=0 && (nums[i-1]==nums[i] || nums[i-1]==nums[i]-1)){
-                continue;
-            }
-            if(i!=n-1 &&(nums[i+1]==nums[i] || nums[i+1]==nums[i]+1)){
-                continue;
-            }
-            result.add(nums[i]);
+        if(nums.length == 1){
+            ans.add(nums[0]);
+            return ans;
         }
-        return result;
+        for(int i = 1; i<nums.length -1 ; i++){
+            if((nums[i-1] + 1 < nums[i]) && (nums[i+1] - 1 > nums[i])){
+                ans.add(nums[i]);
+            }
+        }
+        if(nums.length > 1){
+            if(nums[0] +1 < nums[1]){
+                ans.add(nums[0]);
+            }
+            if(nums[nums.length - 2] + 1 < nums[nums.length-1]){
+                ans.add(nums[nums.length - 1]);
+            }
+        }
+        return ans;
     }
 }
