@@ -11,10 +11,8 @@ class Solution {
 
         for(int i = 1 ; i < nums.length ;i+=2){
             int freq = nums[i-1];
-            while(freq > 0){
-                res[idx] = nums[i];
-                freq--;
-                idx++;
+            while(freq-- > 0){
+                res[idx++] = nums[i];
             }
         }
         return res;
