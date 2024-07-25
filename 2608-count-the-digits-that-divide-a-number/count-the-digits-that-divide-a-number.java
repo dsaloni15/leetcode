@@ -4,10 +4,8 @@ class Solution {
         int og = num;
         while(num > 0){
             int ld = num%10;
-            if(og%ld == 0){
-                count++;
-            }
-            num = num/10;
+            if(og%ld == 0) count++;
+            num /= 10;
         }
         return count;
     }
