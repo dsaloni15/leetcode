@@ -1,15 +1,23 @@
-import java.math.BigInteger;
 class Solution {
     public String addStrings(String num1, String num2) {
-        BigInteger a = new BigInteger(num1);
-        BigInteger b = new BigInteger(num2);
+        char[] arr1 = num1.toCharArray();
+        char[] arr2 = num2.toCharArray();
+        int carry = 0;
+        StringBuilder res = new StringBuilder();
+        int i = arr1.length - 1;
+        int j = arr2.length - 1;
 
-        // Add the numbers
-        BigInteger res = a.add(b);
+        while(i>=0 || j>=0 || carry !=0){
+            int d1 = (i>=0) ? arr1[i]-'0' : 0;
+            int d2 = (j>=0) ? arr2[j]-'0' : 0;
 
-        // Convert the result back to a string
-        String ans = res.toString();
+            int sum = d1+d2+carry;
+            carry = sum/10;
+            res.append(sum%10);
 
-        return ans;
+            i--;
+            j--;
+        }
+        return res.reverse().toString();
     }
 }
