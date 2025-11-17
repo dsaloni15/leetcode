@@ -10,7 +10,7 @@ class Solution {
             }
         }
         Set<Integer> keySet = map.keySet();
-        for(Integer key : keySet){
+        for(int key : keySet){
             if(map.get(key) > nums.length/2){
                 return key;
             }
