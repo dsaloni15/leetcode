@@ -4,21 +4,23 @@ class Solution {
             return x;
         }
         int i = 1;
-        int j = x;
+        int j = x/2;
+        int ans = 0;
 
         while(i <= j){
             int mid = i + (j-i)/2;
-
-            if(Math.pow(mid,2) == x){
+            long sq = (long)mid*mid;
+            if(sq == x){
                 return mid;
             }
-            if(Math.pow(mid,2) > x){
-                j = mid-1;
-            }
-            else{
+            if(sq < x){
+                ans = mid;
                 i = mid+1;
             }
+            else{
+                j = mid-1;
+            }
         }
-        return j;
+        return ans;
     }
 }
