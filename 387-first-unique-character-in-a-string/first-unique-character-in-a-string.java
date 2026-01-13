@@ -1,17 +1,16 @@
 class Solution {
     public int firstUniqChar(String s) {
-        int[] freq = new int[26];
-        Queue<Integer> q = new LinkedList<>();
+        HashMap<Character,Integer> map = new HashMap<>();
+
+        for( char c : s.toCharArray()){
+            map.put(c,map.getOrDefault(c,0)+1);
+        }
 
         for(int i = 0 ; i < s.length() ; i++){
-            char ch = s.charAt(i);
-            q.add(i);
-            freq[ch-'a']++;
-
-            while(!q.isEmpty() && freq[s.charAt(q.peek())-'a'] > 1){
-                q.remove();
+            if(map.get(s.charAt(i)) == 1){
+                return i;
             }
         }
-        return q.isEmpty() ? -1 : q.peek();
+        return -1;
     }
 }
